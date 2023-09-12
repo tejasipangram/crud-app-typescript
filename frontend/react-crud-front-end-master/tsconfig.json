@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "allowImportingTsExtensions": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": "./src",
+
+    "target": "es5",
+
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src", "internals/startingTemplate/**/*"],
+  "ts-node": {
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "noEmit": true,
+      "allowSyntheticDefaultImports": true
+    }
+  }
+  // "files": [
+  //   "core.ts",
+  //   "sys.ts",
+  //   "types.ts",
+  //   "scanner.ts",
+  //   "parser.ts",
+  //   "utilities.ts",
+  //   "binder.ts",
+  //   "checker.ts",
+  //   "emitter.ts",
+  //   "program.ts",
+  //   "commandLineParser.ts",
+  //   "tsc.ts",
+  //   "diagnosticInformationMap.generated.ts"
+  // ]
+}
