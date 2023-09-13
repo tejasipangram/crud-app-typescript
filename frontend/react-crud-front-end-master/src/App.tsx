@@ -1,5 +1,9 @@
 import "./App.css";
-import { GlobalContext } from "./GloblaCotext";
+import {
+  GlobalContext,
+  GlobalContextProvider,
+  GlobalContextType,
+} from "./GloblaCotext.tsx";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -80,7 +84,7 @@ function App() {
             if (!allData) {
               setAllData(json.data);
             } else {
-              setAllData((prev) => {
+              setAllData((prev: any): any => {
                 return [json.data, ...prev];
               });
             }
@@ -193,33 +197,32 @@ function App() {
     getAllData();
   }, [pageSize, user]);
 
+  const contextValues: GlobalContextType = {
+    setKey,
+    totalItems,
+    currentPage,
+    setCurrentPage,
+    createList,
+    updateList,
+    deleteList,
+    totalPages,
+    getAllData,
+    pageSize,
+    setPageSize,
+    currentData,
+    loading,
+    setLoading,
+    userId,
+    setUserId,
+    user,
+    load,
+    darkMode,
+  };
   return (
     <BrowserRouter>
-      <GlobalContext.Provider
-        value={{
-          setKey,
-          totalItems,
-          currentPage,
-          setCurrentPage,
-          createList,
-          updateList,
-          deleteList,
-          totalPages,
-          getAllData,
-          pageSize,
-          setPageSize,
-          currentData,
-          loading,
-          setLoading,
-          userId,
-          setUserId,
-          user,
-          load,
-          darkMode,
-        }}
-      >
+      <GlobalContextProvider initialContextValues={contextValues}>
         <NavbarComp user={user} setDarkMode={setDarkMode} />
-        <Loader loading={loading} setLoading={setLoading} />
+        <Loader />
         <ToastContainer
           position="top-center"
           autoClose={3000}
@@ -243,7 +246,7 @@ function App() {
           />
           <Route path="/users" element={<UsersList />} />
         </Routes>
-      </GlobalContext.Provider>
+      </GlobalContextProvider>
     </BrowserRouter>
   );
 }
